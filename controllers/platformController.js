@@ -29,15 +29,14 @@ const getPlatform = async (req, res) => {
 }
 
 const createPlatform = async (req, res) => {
-    const {name, services, price} = req.body;
-    if (!name || !services || !price) {
+    const {name, services} = req.body;
+    if (!name || !services) {
         return res.status(400).json({message: 'All fields are required'});
     }
 
     const newPlatform = new Platform({
         name,
         services,
-        price
     })
 
     await newPlatform.save()
